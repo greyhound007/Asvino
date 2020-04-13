@@ -4,7 +4,7 @@ from app import app
 #,dataset_id,client
 from flask import Flask, flash, request, redirect, render_template,session
 from werkzeug.utils import secure_filename
-import csv,pandas
+#import csv,pandas
 from google.cloud import bigquery
 from collections import OrderedDict 
 from factor import breast_factor_score
