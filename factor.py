@@ -2,29 +2,27 @@ from collections import OrderedDict
 
 
 def breast_factor_score(factors):
-    score=0
+    score=1
 
     breast_factors = OrderedDict([
-    ('family_history',["no","yes"] ),       #no,yes 
-    ('sex', ["male","female"]),
-    ('menarche_age',  [ '-11', '11', '12', '13', '14', '15', '15+']),
-    ('children', [ '0', '1', '2', '>2']),
-    ('age_of_first_birth',  ['-','-20', '20-24', '25-29', '29+']),
-    ('oral_contraception',  [ 'never', 'former', 'current']),
-    ('mht',  ['never/former', 'current e-type', 'current other/unknown type (including combined type)']), #menopause hormone replacement
-    ('bmi', ['-18.5', '18.5-25', '25-30', '30+']), #body mass index
-    ('alcohol',  [ '0', '-5', '5-15', '15-25', '25-35', '35-45', '45+']), #alcohol intake in grams/day
-    ('age_of_menopause',  ['-', '-40', '40-44', '45-49', '50-54', '54+']),
-    ('height', [ '-152.91', '152.91-159.65', '159.65-165.96', '165.96-172.70', '172.70+']), #in cms
-    ('gene_type',["no","brca2","brca1","brca1+2"])
+    ('family_history',{'1d50+':1.8,'1d50-':3.3,'2d':1.5,'2+1d':3.6,'no':1} ),       #no,yes 
+    ('age', {'-30':.44,'30-40':1.47,'40-50':2.38,'50-60':3.56,'60+':3.82}),
+    ('menarche_age',  {'-12':1.21, '12-13':1.1, '14+':1}),
+    ('age_of_first_birth',  {'-':3.76,'-20':1, '20-24':1.63, '25-29':2.61, '30-34':2.53,'35+':4.12}),
+    ('mht',  {'never/former':1, 'current e-type':1.1, 'current other/unknown type (including combined type)':1.3}), #menopause hormone replacement
+    ('alcohol',  {'0':.96, '1':1.02, '2':1.04, '2+':1.2}), #alcohol intake in grams/day
+    ('age_of_menopause',  {'-':1, '-55':1, '55+':1.5}),
+    ('height', {'-156.4':1, '156.4-160':1.37, '160-163.4':1.34, '163.4-167':1.43, '167+':1.27}), #in cms
+    ('gene_type',{"no":1,"40+":200,"40-":15,}),
+    ('radiation_exposure',{'Repeated fluoroscopy':1.6,'Radiation therapy for Hodgkin disease':5.2,'no':1})
     ])
     
+  
 
     #print(breast_factors)
     for factor in factors:
         
-        score =score + breast_factors[factor].index(factors[factor])
+        score = score* breast_factors[factor][factors[factor]]
     return score
-
 
 
