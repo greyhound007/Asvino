@@ -171,86 +171,62 @@
 			<p>Let’s get started. Firstly we need to gather some information about you. </p>
 		  </div>
 		  
-		  <form method="post" action="/" enctype="multipart/form-data" id="#pro-form">
+		  <form method="post" action="/" enctype="multipart/form-data" id="#pro-form">		
 		  <div class="accordion-list">
 			<ul>
-			  <li data-aos="fade-up">
-				<dl>
-					<p>
-							<label for="family_history"><b>Any Family History with Breast Cancer?	</b></label><br>
-							<input type="radio" id="yes" name="family_history" value="yes" required>
-  							<label for="yes">Yes</label><br>
-							<input type="radio" id="no" name="family_history" value="no">
-							<label for="no">No</label><br>
-							
-						
-					</p>
-					</dl>
-			  </li>
-  
-			  <li data-aos="fade-up" data-aos-delay="100">
-				<dl>
-					<p>
-							<label for="Sex"><b>What is your gender?</b></label><br>
-							<input type="radio" id="male" name="Sex" value="male" required>
-  							<label for="male">Male</label><br>
-							<input type="radio" id="female"  name="Sex" value="female">
-							<label for="female">Female</label><br>
-					</p>
-					</dl>
-			  </li>
+					<li data-aos="fade-up" >
+							<dl>
+								<p>
+										<label for="family_history"><b>Any Family History with Breast Cancer?	</b> </label><br>
+										<select id="family_history" name="family_history" required>
+										<option value="1d50+">1st degree relative 50 years or older (postmenopause)</option>
+										<option value="'1d50-">	1st degree relative younger than 50 years (premenopause)</option>
+										<option value="2d">	2nd degree relative</option>
+										<option value="2+1d">2 or more 1st degree relatives</option>
+			
+										<option value="no">No 1st or 2nd degree relative</option>
+			
+									
+									</select>
+								</p>
+								</dl>
+							</li>
+							<li data-aos="fade-up" data-aos-delay="100">
+									<dl>
+										<p>
+												<label for="age"><b>What is your age? </b>(Answer in years) </label><br>
+												<select id="age" name="age" required>
+												<option value="-30">&lt30</option>
+												<option value="30-40">30-40</option>
+												<option value="40-50">40-50</option>
+												<option value="50-60">50-60</option>
+					
+												<option value="60+">&gt60</option>
+					
+											
+											</select>
+										</p>
+										</dl>
+									</li>
   
 			  <li data-aos="fade-up" data-aos-delay="200">
 				<dl>
 					<p>
 							<label for="height"><b>What is your height? </b>(Answer in centimeters) </label><br>
 							<select id="height" name="height" required>
-							<option value="-152.91">&lt152.91</option>
-							<option value="152.91-159.65">152.91-&lt159.65</option>
-							<option value="159.65-165.96">159.65-&lt165.96</option>
-							<option value="165.96-172.70">165.96-&lt172.70</option>
-
-							<option value="172.70+">&gt=172.70</option>
+							<option value="-156.4">&lt=156.4</option>
+							<option value="156.4-160">&gt156.4-160</option>
+							<option value="160-163.4">&gt160-163.4</option>
+							<option value="163.4-167">&gt163.4-167</option>
+							<option value="167+">&gt167</option>
 
 						
 						</select>
 					</p>
 					</dl>
 			  </li>
-
+  
 			  <li data-aos="fade-up" data-aos-delay="300">
-					<dl>
-						<p>
-								<label for="bmi"><b>Body Mass Index (in kg/m<sup>2</sup>)</b></label><br>
-								<select id="bmi" name="bmi" required>
-								<option value="-18.5">&lt18.5</option>
-								<option value="18.5-25">18.5-&lt25</option>
-								<option value="25-30">25-&lt30</option>
-								<option value="30+">&gt=30</option>
-	
-							
-							</select>
-						</p>
-						</dl>
-				  </li>
-  
-			  <li data-aos="fade-up" data-aos-delay="400">
-				<dl>
-					<p>
-							<label for="children"><b>How many children have you had?</b></label><br>
-							<select id="children" name="children" required>
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="2+">&gt 2</option>
-						
-						</select>
-					</p>
-					</dl>
-					
-			  </li>
-  
-			  <li data-aos="fade-up" data-aos-delay="500">
 					<dl>
 							<p>
 								<label for="age_of_first_birth"><b>What age were you when your first child was born?</b></label><br>
@@ -259,7 +235,8 @@
 								<option value="-20">&lt20</option>
 								<option value="20-24">20-24</option>
 								<option value="25-29">25-29</option>
-								<option value="29+">&gt29</option>
+								<option value="30-34">30-34</option>
+								<option value="35+">&gt 35</option>
 		
 							
 							</select>
@@ -268,18 +245,14 @@
 				
 			  </li>
 
-			  <li data-aos="fade-up" data-aos-delay="600">
+			  <li data-aos="fade-up" data-aos-delay="400">
 					<dl>
 							<p>
 									<label for="menarche_age"><b>How old were you when your periods first started?</b></label><br>
 									<select id="menarche_age" name="menarche_age" required>
-									<option value="-11">&lt 11</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-									<option value="13">13</option>
-									<option value="14">14</option>
-									<option value="15">15</option>
-									<option value="15+">&gt 15 </option>
+									<option value="-12">&lt 12</option>
+									<option value="12-13">12-13</option>
+									<option value="14+">&gt= 14 </option>
 									
 									
 								</select>
@@ -288,17 +261,14 @@
 			  </li>
 
 
-			  <li data-aos="fade-up" data-aos-delay="700">
+			  <li data-aos="fade-up" data-aos-delay="500">
 					<dl>
 							<p>
 									<label for="age_of_menopause"><b>How old were you when you went through menopause?</b></label><br>
 									<select id="age_of_menopause" name="age_of_menopause" required>
 									<option value="-">I haven't been through menopause.</option>
-									<option value="-40">&lt40</option>
-									<option value="40-44">40-44</option>
-									<option value="45-49">45-49</option>
-									<option value="50-54">50-54</option>
-									<option value="54+">&gt54</option>
+									<option value="-55">&lt 55</option>
+									<option value="55+">&gt= 54</option>
 		
 								</select>
 							</p>
@@ -307,7 +277,7 @@
 					
 			  </li>
 
-			  <li data-aos="fade-up" data-aos-delay="800">
+			  <li data-aos="fade-up" data-aos-delay="600">
 				<dl>
 					<p>
 						<label for="mht"><b>Have you ever used Menopause Hormone Replacement therapy?</b><br> If yes what type? </label><br>
@@ -321,67 +291,60 @@
 				</dl>	
 			  </li>
 
-			  <li data-aos="fade-up" data-aos-delay="900">
-					<dl>
-							<p>
-									<label for="oral_contraception"><b>What would you say your Oral Contraception Usage status is?</b></label><br>
-									<select id="oral_contraception" name="oral_contraception" required>
-									<option value="never">Never</option>
-									<option value="former">Former</option>
-									<option value="current">Current</option>
-								
-								</select>
-							</p>
-							</dl>	
-
-			  </li>
+			
 
 
-			  <li data-aos="fade-up" data-aos-delay="1000">
+			  <li data-aos="fade-up" data-aos-delay="700">
 				<dl>
 					<p>
-							<label for="alcohol"><b>How many standard drinks of alochol do you consume, on average, a day?</b> ( in grams/day )</label><br>
+							<label for="alcohol"><b>How many standard drinks of alochol do you consume, on average, a day?</b></label><br>
 							<select id="alcohol" name="alcohol" required>
-							<option value="0">0</option>
-							<option value="-5">&lt5</option>
-							<option value="5-15">5-&lt15</option>
-							<option value="15-25">15-&lt25</option>
-							<option value="25-35">25-&lt35</option>
-							<option value="35-45">35-&lt45</option>
-							<option value="45+">&gt=45</option>
-
+							<option value="0">0 drinks per day</option>
+							<option value="1">Less than 1 drink per day</option>
+							<option value="2">Less than 2 drinks per day</option>
+							<option value="2+">More than 2 drinks per day</option>
+							
 						</select>
 					</p>
 					</dl>		
 			  </li>
-
+				<li data-aos="fade-up" data-aos-delay="800">
+						<dl>
+							<p>
+									<label for="radiation_exposure"><b>Have you had any Radiation exposure?</b></label><br>
+									<select id="radiation_exposure" name="radiation_exposure" required>
+									<option value="Repeated fluoroscopy">Yes, Repeated fluoroscopy</option>
+									<option value="Radiation therapy for Hodgkin disease">Yes, Radiation therapy for Hodgkin's disease</option>
+									<option value="no">No exposure</option>
+									
+								</select>
+							</p>
+							</dl>		
+						</li>
 			  
 
 
-			  <li data-aos="fade-up" data-aos-delay="1100" >
+			  <li data-aos="fade-up" data-aos-delay="900" >
 				<dl>
 					<p>
 						<label for="gene_test"><b>Have you ever done a gene test?</b></label><br>
 							<input type="radio" id="yes" name="gene_test" value="yes" required>
 							<label for="yes">Yes</label><br>
-							<input type="radio" id="no"  name="gene_test" value="no">
+							<input type="radio" id="no"  name="gene_test" value="no" selected>
   							<label for="no">No</label><br>
 							
 					</p>
 				</dl>
 			  </li>
-			  <li data-aos="fade-up" data-aos-delay="1200" id="test">
+			  <li data-aos="fade-up" data-aos-delay="1000" id="test" >
 					<dl>
 						<p>
 							<label for="gene_type"><b>What was the outcome of your gene test?</b></label><br>
 							<select id="gene_type" name="gene_type" required>
 									<option value="no">I don't know</option>
 									<option value="no">No Abnormality</option>
-									<option value="brca1">BRCA1 gene Abnormality</option>
-									<option value="brca2">BRCA2 gene Abnormality</option>
-									<option value="brca1+2">BRCA1 and BRCA2 gene Abnormality</option>
-
-
+									<option value="40+">BRCA1/BRCA2 gene Abnormality</option>
+							
 								</select>
 						</p>
 					</dl>
@@ -483,6 +446,7 @@
 
 <!-- Progress bar and gene test-->
 	<script>
+	$("#test").hide()
 	var progress = $("#progress");
 	$('input[type=radio][name="family_history"]').on('change',function(){
         progress.attr("value", "8.3");
