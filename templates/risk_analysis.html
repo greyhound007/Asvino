@@ -69,12 +69,29 @@
                        <form method="post" action="/risk_analysis" enctype="multipart/form-data">
                        <div class="accordion-list">
                         <ul>
+                          {% if score <= 5 %}
                               <li data-aos="fade-up">
                                     <dl>
-                                          <h1 data-aos="fade-up" data-aos-delay="200">Your Risk Score is :  <b>{{score}}</b></h1>
+                                          <h1 data-aos="fade-up" data-aos-delay="200">You have a <b>LOW</b> Risk for Breast Cancer</h1>
                                        </dl>
                                    </li>
-                                   
+                          {% endif %}
+                          {% if score >5 and score <= 20 %}
+                          <li data-aos="fade-up">
+                              <dl>
+                                    <h1 data-aos="fade-up" data-aos-delay="200">You have a <b>MEDIUM</b> Risk for Breast Cancer</h1>
+                                 </dl>
+                             </li>
+                          {% endif %}
+
+                          {% if score > 20 %}
+                          <li data-aos="fade-up">
+                              <dl>
+                                    <h1 data-aos="fade-up" data-aos-delay="200">You have a <b>HIGH</b> Risk for Breast Cancer</h1>
+                                 </dl>
+                             </li>
+                          {% endif %}
+                            
                                       <li data-aos="fade-up" data-aos-delay="300"  >
                                           <dl>
                                              <p>
