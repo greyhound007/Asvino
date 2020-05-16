@@ -1,13 +1,12 @@
 import os
 
-from app import app
-#,dataset_id,client
+from app import app,dataset_id,client
 from flask import Flask, flash, request, redirect, render_template,session
 from werkzeug.utils import secure_filename
-import csv,pandas
 from google.cloud import bigquery
 from collections import OrderedDict 
 from factor import breast_factor_score
+import uuid
 
 ALLOWED_EXTENSIONS = set(['txt'])
 
@@ -19,12 +18,13 @@ def file_header(filename):
 	
 filestatus=False
 
-#class User
+@app.route('/', methods=['POST','GET'])   
+def home():
 
-@app.route('/', methods=['POST','GET'])    #dashboard/id
+    return render_template('home.html')
+@app.route('/test', methods=['POST','GET'])   
 def fill_form():
 
-    #get user info (query through id) 
     
     
     if request.method == 'POST':
@@ -53,10 +53,28 @@ def fill_form():
                  ])
 
             
-            session['factor']=factors
+           
             
             score = breast_factor_score(factors)
-
+            if score < 5 :
+                risk="low"
+            elif score >5 and score <=20 : 
+                risk="medium"
+            else:
+                risk="high"
+            idd=str(uuid.uuid4())
+            try:
+                            query = """
+                                            insert into
+                                                 `{}.form_data` 
+                                                    values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','','')
+                                                    
+                                                    
+                                                """.format(dataset_id,request.form["family_history"],age, request.form.get("menarche_age"),request.form.get("age_of_first_birth"), request.form.get("mht"),request.form.get("alcohol"),request.form.get("age_of_menopause"),request.form.get("height"),g,request.form.get("radiation_exposure"),risk,idd)
+                            query_job = client.query(query) 
+                            session['id']=idd
+            except:
+                            print("Unable to insert into form_data")
             
 
 
@@ -64,17 +82,83 @@ def fill_form():
             return render_template('risk_analysis.html',score=score)
     else:
 
-        return render_template('upload.html') #pass user
+        return render_template('test.html') 
 
 
-@app.route('/risk_analysis', methods=['POST','GET'])    #dashboard/id
-def risk():
+@app.route('/low', methods=['POST','GET'])    
+def low():
     if request.method == 'POST':
-        answer=request.form["gene_test"]
+        idd = session['id']
+        answer=request.form["gene_test1"]
         message=""
         if answer == "yes":
-            email= request.form.get("email")
-            phone=request.form.get("phone")
+            email= request.form.get("email1")
+            phone=request.form.get("phone1")
+
+            try: 
+                            query = """
+                                        update 
+                                            `{}.form_data` as t
+                                        set t.phone = '{}',t.email='{}' 
+                                        where  t.id = '{}'
+                            
+                            """.format(dataset_id,phone,email,idd)
+                            query_job = client.query(query) 
+
+            except:
+                            print("Unable to update form data of {}".format(idd) )
+            message="We will get back to you with the results shortly."
+        return render_template("final.html",message=message)
+
+@app.route('/medium', methods=['POST','GET'])   
+def medium():
+    if request.method == 'POST':
+        idd = session['id']
+
+        answer=request.form["gene_test2"]
+        message=""
+        if answer == "yes":
+            email= request.form.get("email2")
+            phone=request.form.get("phone2")
+            print(email,phone)
+            try: 
+                            query = """
+                                        update 
+                                            `{}.form_data` as t
+                                        set t.phone = '{}',t.email='{}'
+                                        where  t.id = '{}'
+                            
+                            """.format(dataset_id,phone,email,idd)
+                            query_job = client.query(query) 
+                            print("updated")
+
+            except:
+                            print("Unable to update form data of {}".format(idd) )
+            message="We will get back to you with the results shortly."
+        return render_template("final.html",message=message)
+
+@app.route('/high', methods=['POST','GET'])    
+def high():
+    if request.method == 'POST':
+        idd = session['id']
+
+        answer=request.form["gene_test3"]
+        message=""
+        if answer == "yes":
+            email= request.form.get("email3")
+            phone=request.form.get("phone3")
+            try: 
+                            query = """
+                                        update 
+                                            `{}.form_data` as t
+                                        set t.phone = '{}',t.email='{}'
+                                        where  t.id = '{}'
+                            
+                            """.format(dataset_id,phone,email,idd)
+                            query_job = client.query(query) 
+
+            except:
+                            print("Unable to update form data of {}".format(idd) )
             message="We will get back to you with the results shortly."
         return render_template("final.html",message=message)
 
