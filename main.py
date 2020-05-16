@@ -63,18 +63,16 @@ def fill_form():
             else:
                 risk="high"
             idd=str(uuid.uuid4())
-            try:
-                            query = """
+            
+            query = """
                                             insert into
                                                  `{}.form_data` 
                                                     values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','','')
                                                     
                                                     
                                                 """.format(dataset_id,request.form["family_history"],age, request.form.get("menarche_age"),request.form.get("age_of_first_birth"), request.form.get("mht"),request.form.get("alcohol"),request.form.get("age_of_menopause"),request.form.get("height"),g,request.form.get("radiation_exposure"),risk,idd)
-                            query_job = client.query(query) 
-                            session['id']=idd
-            except:
-                            print("Unable to insert into form_data")
+            query_job = client.query(query) 
+            session['id']=idd
             
 
 
