@@ -76,7 +76,7 @@
   
 		  <div class="section-title">
 				
-			<h2>Test</h2>
+			<h2>Breast cancer Risk Profiler</h2>
 			<p>Let’s get started. Firstly we need to gather some information about you. </p>
 		  </div>
 		  
@@ -88,12 +88,13 @@
 								<p>
 										<label for="family_history"><b>Any Family History with Breast Cancer?	</b> </label><br>
 										<select id="family_history" name="family_history" required>
+										<option value="no">No 1st or 2nd degree relative</option>
 										<option value="1d50+">1st degree relative 50 years or older (postmenopause)</option>
 										<option value="'1d50-">	1st degree relative younger than 50 years (premenopause)</option>
 										<option value="2d">	2nd degree relative</option>
 										<option value="2+1d">2 or more 1st degree relatives</option>
 			
-										<option value="no">No 1st or 2nd degree relative</option>
+										
 			
 									
 									</select>
@@ -222,9 +223,9 @@
 							<p>
 									<label for="radiation_exposure"><b>Have you had any Radiation exposure?</b></label><br>
 									<select id="radiation_exposure" name="radiation_exposure" required>
+									<option value="no">No exposure</option>
 									<option value="Repeated fluoroscopy">Yes, Repeated fluoroscopy</option>
 									<option value="Radiation therapy for Hodgkin disease">Yes, Radiation therapy for Hodgkin's disease</option>
-									<option value="no">No exposure</option>
 									
 								</select>
 							</p>
