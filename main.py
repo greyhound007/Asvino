@@ -132,7 +132,7 @@ def medium():
 
             except:
                             print("Unable to update form data of {}".format(idd) )
-            message="We will get back to you with the results shortly."
+            message="We will get back to you shortly."
         return render_template("final.html",message=message)
 
 @app.route('/high', methods=['POST','GET'])    
