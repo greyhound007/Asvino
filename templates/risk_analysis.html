@@ -249,7 +249,7 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
                                     <dl>
                                        <p>
                                           <label for="phone"><b>Please enter your Phone number:</b></label><br>
-                                          <input type="text" id="phone" name="phone3" placeholder="10 digit phone number" pattern="[1-9]{1}[0-9]{9}" >
+                                          <input type="text" id="phone3" name="phone3" placeholder="10 digit phone number" pattern="[1-9]{1}[0-9]{9}" >
                                        </p>
                                     </dl>
                                    </li>
@@ -313,15 +313,15 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
                if( $(this).val()==="yes"){
                $("#gene_email1").show()
                $("#gene_phone1").show()
-               $("gene_email1").prop('required',true);
-               $("gene_phone1").prop('required',true); 
+               $("#email1").prop('required',true);
+               $("#phone1").prop('required',true); 
 
                }
                else{
                $("#gene_email1").hide()
                $("#gene_phone1").hide()
-               $("gene_email1").prop('required',false);
-               $("gene_phone1").prop('required',false); 
+               $("#email1").prop('required',false);
+               $("#phone1").prop('required',false); 
 
                }
             });
@@ -330,15 +330,15 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
                if( $(this).val()==="yes"){
                $("#gene_email2").show()
                $("#gene_phone2").show()
-               $("gene_email2").prop('required',true);
-               $("gene_phone22").prop('required',true); 
+               $("#email2").prop('required',true);
+               $("#phone2").prop('required',true); 
 
                }
                else{
                $("#gene_email2").hide()
                $("#gene_phone2").hide()
-               $("gene_email2").prop('required',false);
-               $("gene_phone2").prop('required',false); 
+               $("#email2").prop('required',false);
+               $("#phone2").prop('required',false); 
 
                }
             });
@@ -347,15 +347,15 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
                if( $(this).val()==="yes"){
                $("#gene_email3").show()
                $("#gene_phone3").show()
-               $("gene_email3").prop('required',true);
-               $("gene_phone3").prop('required',true); 
+               $("#email3").prop('required',true);
+               $("#phone3").prop('required',true); 
 
                }
                else{
                $("#gene_email3").hide()
                $("#gene_phone3").hide()
-               $("gene_email3").prop('required',false);
-               $("gene_phone3").prop('required',false); 
+               $("#email3").prop('required',false);
+               $("#phone3").prop('required',false); 
 
                }
             });
