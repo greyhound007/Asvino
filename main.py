@@ -106,7 +106,9 @@ def low():
             except:
                             print("Unable to update form data of {}".format(idd) )
             message="We will get back to you with the results shortly."
-        return render_template("final.html",message=message)
+            return render_template("final.html",message=message)
+        else:
+            return render_template("final1.html",message="")
 
 @app.route('/medium', methods=['POST','GET'])   
 def medium():
@@ -132,8 +134,10 @@ def medium():
 
             except:
                             print("Unable to update form data of {}".format(idd) )
-            message="We will get back to you shortly."
-        return render_template("final.html",message=message)
+            message="We will get back to you with the results shortly."
+            return render_template("final.html",message=message)
+        else:
+            return render_template("final1.html",message="")
 
 @app.route('/high', methods=['POST','GET'])    
 def high():
@@ -158,7 +162,10 @@ def high():
             except:
                             print("Unable to update form data of {}".format(idd) )
             message="We will get back to you with the results shortly."
-        return render_template("final.html",message=message)
+            return render_template("final.html",message=message)
+        else:
+            return render_template("final1.html",message="")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
