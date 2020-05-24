@@ -63,14 +63,13 @@ def fill_form():
             else:
                 risk="high"
             idd=str(uuid.uuid4())
-            
             query = """
                                             insert into
-                                                 `{}.form_data` 
-                                                    values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','','')
+                                                 `{}.form` 
+                                                    values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','','')
                                                     
                                                     
-                                                """.format(dataset_id,request.form["family_history"],age, request.form.get("menarche_age"),request.form.get("age_of_first_birth"), request.form.get("mht"),request.form.get("alcohol"),request.form.get("age_of_menopause"),request.form.get("height"),g,request.form.get("radiation_exposure"),risk,idd)
+                                                """.format(dataset_id,request.form["family_history"],age, request.form.get("menarche_age"),request.form.get("age_of_first_birth"), request.form.get("mht"),request.form.get("alcohol"),request.form.get("age_of_menopause"),request.form.get("height"),g,request.form.get("radiation_exposure"),risk,idd,request.form.get("fears"))
             query_job = client.query(query) 
             session['id']=idd
             
@@ -83,89 +82,35 @@ def fill_form():
         return render_template('test.html') 
 
 
-@app.route('/low', methods=['POST','GET'])    
-def low():
+@app.route('/feedback', methods=['POST','GET'])    
+def feedback():
     if request.method == 'POST':
         idd = session['id']
-        answer=request.form["gene_test1"]
-        message=""
-        if answer == "yes":
-            email= request.form.get("email1")
-            phone=request.form.get("phone1")
-
-            try: 
+        rating=""
+        feedback=""
+        rating=request.form["emotion"]
+        feedback=request.form.get("fb")
+        
+        
+        try: 
                             query = """
                                         update 
-                                            `{}.form_data` as t
-                                        set t.phone = '{}',t.email='{}' 
+                                            `{}.form` as t
+                                        set t.rating = '{}',t.feedback='{}' 
                                         where  t.id = '{}'
                             
-                            """.format(dataset_id,phone,email,idd)
+                            """.format(dataset_id,rating,feedback,idd)
                             query_job = client.query(query) 
 
-            except:
-                            print("Unable to update form data of {}".format(idd) )
-            message="We will get back to you with the results shortly."
-            return render_template("final.html",message=message)
-        else:
-            return render_template("final1.html",message="")
+        except:
+                print("Unable to update form data of {}".format(idd) )
+        
+        return redirect("/final")
 
-@app.route('/medium', methods=['POST','GET'])   
-def medium():
-    if request.method == 'POST':
-        idd = session['id']
-
-        answer=request.form["gene_test2"]
-        message=""
-        if answer == "yes":
-            email= request.form.get("email2")
-            phone=request.form.get("phone2")
-            print(email,phone)
-            try: 
-                            query = """
-                                        update 
-                                            `{}.form_data` as t
-                                        set t.phone = '{}',t.email='{}'
-                                        where  t.id = '{}'
-                            
-                            """.format(dataset_id,phone,email,idd)
-                            query_job = client.query(query) 
-                            print("updated")
-
-            except:
-                            print("Unable to update form data of {}".format(idd) )
-            message="We will get back to you with the results shortly."
-            return render_template("final.html",message=message)
-        else:
-            return render_template("final1.html",message="")
-
-@app.route('/high', methods=['POST','GET'])    
-def high():
-    if request.method == 'POST':
-        idd = session['id']
-
-        answer=request.form["gene_test3"]
-        message=""
-        if answer == "yes":
-            email= request.form.get("email3")
-            phone=request.form.get("phone3")
-            try: 
-                            query = """
-                                        update 
-                                            `{}.form_data` as t
-                                        set t.phone = '{}',t.email='{}'
-                                        where  t.id = '{}'
-                            
-                            """.format(dataset_id,phone,email,idd)
-                            query_job = client.query(query) 
-
-            except:
-                            print("Unable to update form data of {}".format(idd) )
-            message="We will get back to you with the results shortly."
-            return render_template("final.html",message=message)
-        else:
-            return render_template("final1.html",message="")
-
+@app.route('/final', methods=['POST','GET'])    
+def final():
+    session.pop("idd",None)
+    return render_template("final.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
