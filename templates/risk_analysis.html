@@ -25,7 +25,10 @@
   
 	<!-- Template Main CSS File -->
 	<link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
-  
+	
+  	<!-- Icons -->
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
 	<!-- =======================================================
 	* Template Name: Appland - v2.0.0
 	* Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
@@ -46,6 +49,8 @@ s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
  fbq('init', '532239537659109'); 
 fbq('track', 'PageView');
+fbq('track', 'Registration');
+	
 </script>
 <noscript>
  <img height="1" width="1" 
@@ -96,189 +101,91 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
                        <div class="accordion-list">
                         <ul>
                           {% if score <= 5 %}
-                             <form method="post" action="/low" enctype="multipart/form-data">
 
                               <li data-aos="fade-up">
                                     <dl>
                                           <h1 data-aos="fade-up" data-aos-delay="200">You have a <b>LOW</b> Risk for Breast Cancer</h1>
                                        </dl>
                                    </li>
-                                   <li data-aos="fade-up" data-aos-delay="300" >
-                                    <dl>
-                                    <p> Abnormal BRCA1 and BRCA2 genes may account for up to 10% of all breast cancers. <br><b> We would recommend a genetic test to get a more accurate risk profile</b></p>
-                                       </dl>
-                                   </li>
-                                   <li data-aos="fade-up" data-aos-delay="400"  >
-                                    <dl>
-                                       <p>
-                                          <label for="gene_test1"><b>Would you like to do a gene test for a more accurate analysis?</b></label><br>
-                                          <input type="radio" id="yes" name="gene_test1" value="yes" required>
-                                          <label for="yes">Yes</label><br>
-                                          <input type="radio" id="no"  name="gene_test1" value="no">
-                                          <label for="no">No</label><br>
-                                       </p>
-                                    </dl>
-                                   </li>
-                                   <li data-aos="fade-up" data-aos-delay="400" id="gene_email1" style="display:none">
-                                       <dl>
-                                          <p>
-                                             <label for="email1"><b>Please enter your email address:</b></label><br>
-                                             <input type="email" id="email1" name="email1" placeholder="abc@xyz.com" >
-                                          </p>
-                                       </dl>
-                                      </li>
-                                      <li data-aos="fade-up" data-aos-delay="400" id="gene_phone1" style="display:none">
-                                          <dl>
-                                             <p>
-                                                <label for="phone1"><b>Please enter your Phone number:</b></label><br>
-                                                <input type="text" id="phone1" name="phone1" placeholder="10 digit phone number" pattern="[1-9]{1}[0-9]{9}">
-                                             </p>
-                                          </dl>
-                                         </li>
-                                         
-                                   <li data-aos="fade-up" data-aos-delay="500" >
-                                       <dl>
-                                             <p>
-                                                   <input type="submit" value="Submit" class="button">
-                                                </p>
-                                       </dl>
-                                      </li>
-                                  
-                           
-                                 </ul>
-                  
-                          </div>
-                        </form>
+                                   
                           {% endif %}
                           {% if score >5 and score <= 20 %}
-                          <form method="post" action="/medium" enctype="multipart/form-data">
+                          
 
                           <li data-aos="fade-up">
                               <dl>
                                     <h1 data-aos="fade-up" data-aos-delay="200">You have a <b>MEDIUM</b> Risk for Breast Cancer</h1>
                                  </dl>
                              </li>
-                             
-                             <li data-aos="fade-up" data-aos-delay="300" >
-                                <dl>
-                                <p><b> Lifetime cost to screen and diagnose cancer is estimated to be between Rs 8 - 40 lakhs.</b>  </p>
-
-                                   </dl>
-                               </li>
-
-                             <li data-aos="fade-up" data-aos-delay="400"  >
-                              <dl>
-                                 <p>
-                                    <label for="gene_test2"><b>Would you like to schedule a counselling session on cancer risk management to help you with health and financial planning? 
-                                    </b></label><br>
-                                    <input type="radio" id="yes" name="gene_test2" value="yes" required>
-                                    <label for="yes">Yes</label><br>
-                                    <input type="radio" id="no"  name="gene_test2" value="no">
-                                    <label for="no">No</label><br>
-                                 </p>
-                              </dl>
-                             </li>
-                             <li data-aos="fade-up" data-aos-delay="400" id="gene_email2" style="display:none">
-                                 <dl>
-                                    <p>
-                                       <label for="email2"><b>Please enter your email address:</b></label><br>
-                                       <input type="email" id="email2" name="email2" placeholder="abc@xyz.com" >
-                                    </p>
-                                 </dl>
-                                </li>
-                                <li data-aos="fade-up" data-aos-delay="400" id="gene_phone2" style="display:none">
-                                    <dl>
-                                       <p>
-                                          <label for="phone2"><b>Please enter your Phone number:</b></label><br>
-                                          <input type="text" id="phone2" name="phone2" placeholder="10 digit phone number"  pattern="[1-9]{1}[0-9]{9}">
-                                       </p>
-                                    </dl>
-                                   </li>
-                                   
-                             <li data-aos="fade-up" data-aos-delay="500" >
-                                 <dl>
-                                       <p>
-                                             <input type="submit" value="Submit" class="button">
-                                          </p>
-                                 </dl>
-                                </li>
                             
-                     
-                           </ul>
-            
-                    </div>
-                  </form>
                           {% endif %}
 
                           {% if score > 20 %}
-                          <form method="post" action="/high" enctype="multipart/form-data">
 
                           <li data-aos="fade-up">
                               <dl>
                                     <h1 data-aos="fade-up" data-aos-delay="200">You have a <b>HIGH</b> Risk for Breast Cancer</h1>
                                  </dl>
                              </li>
-                             <li data-aos="fade-up" data-aos-delay="300" >
-                                <dl>
-                                    <p><b> Lifetime cost to screen and diagnose cancer is estimated to be between Rs 8 - 40 lakhs.</b>  </p>
-                                    <p> Lifetime cost to screen and diagnose cancer is estimated to be between Rs 8 - 40 lakhs.  </p>
-
-                                   </dl>
-                               </li>
-                             <li data-aos="fade-up" data-aos-delay="400"  >
-                              <dl>
-                                 <p>
-                                    <label for="gene_test3"><b>Would you like to schedule a counselling session on cancer risk management to help you with health and financial planning? 
-                                    </b></label><br>
-                                    <input type="radio" id="yes" name="gene_test3" value="yes" required>
-                                    <label for="yes">Yes</label><br>
-                                    <input type="radio" id="no"  name="gene_test3" value="no">
-                                    <label for="no">No</label><br>
-                                 </p>
-                              </dl>
-                             </li>
-                             <li data-aos="fade-up" data-aos-delay="400" id="gene_email3" style="display:none">
-                                 <dl>
-                                    <p>
-                                       <label for="email3"><b>Please enter your email address:</b></label><br>
-                                       <input type="email" id="email3" name="email3" placeholder="abc@xyz.com" >
-                                    </p>
-                                 </dl>
-                                </li>
-                                <li data-aos="fade-up" data-aos-delay="400" id="gene_phone" style="display:none">
-                                    <dl>
-                                       <p>
-                                          <label for="phone"><b>Please enter your Phone number:</b></label><br>
-                                          <input type="text" id="phone3" name="phone3" placeholder="10 digit phone number" pattern="[1-9]{1}[0-9]{9}" >
-                                       </p>
-                                    </dl>
-                                   </li>
-                                   
-                             <li data-aos="fade-up" data-aos-delay="500" >
-                                 <dl>
-                                       <p>
-                                             <input type="submit" value="Submit" class="button">
-                                          </p>
-                                 </dl>
-                                </li>
-                            
-                     
-                           </ul>
-            
-                    </div>
-                  </form>
+                             
                           {% endif %}
-                            
-                                     
+                           <li data-aos="fade-up" data-aos-delay="100" >
+                              <div class="container">
+                 
+                                 <div class="section-title">
+                                    
+                                  <h2>Feedback</h2>
+                                  
+                                 </div> 
+				      
+				    <!-- Feedback -->
+                                 <div id="feedback" style="text-align: center">
+                                    <form method="post" action="/feedback" enctype="multipart/form-data" >
+                                    <input style="position: absolute;left:-9999px;" type="radio" name="emotion" id="angry" value="angry" required />
+                                    <label for="angry"><i class='far fa-angry' style='font-size:36px; display: inline-block;cursor: pointer;padding-left: 3px; '></i></label>
+
+                                    
+                                    <input style="position: absolute;left:-9999px;" type="radio" name="emotion" id="sad" value="sad"/>
+                                    <label for="sad"><i class='far fa-frown' style='font-size:36px; display: inline-block;cursor: pointer;padding:  3px;'></i></label>
+
+                                    
+                                    <input style="position: absolute;left:-9999px;" type="radio" name="emotion" id="ok"  value="ok"/>
+                                    <label for="ok"><i class='far fa-meh' style='font-size:36px; display: inline-block;cursor: pointer;padding:  3px;'></i></label>
+
+                                    
+                                    <input style="position: absolute;left:-9999px;" type="radio" name="emotion" id="happy" value="happy"/>
+                                    <label for="happy"><i class='far fa-grin-beam' style='font-size:36px; display: inline-block;cursor: pointer;padding:  3px;'></i></label>
+                                    
+                                    
+                                    <input style="position: absolute;left:-9999px;" type="radio" name="emotion" id="vhappy" value="very happy"/>
+                                    <label for="vhappy"><i class='far fa-grin-hearts' style='font-size:36px; display: inline-block;cursor: pointer;padding: 3px;'></i></label>
+                                   
+                                    <br>
+                                    <input style="width:100%; border:0 ; border-bottom: 1.5px solid #5777ba; margin-top:5%" type="text" name="fb" id="fb" placeholder="What did you like the most?" required/>
+                                    <br>
+                                
+				 <input type="submit" value="Submit Feedback" class="button" style="color:white; background-color:#5777ba;  margin-top:5% ;border:0"> 
+                                    
+                                    </form> 
+                                </div>
+                           </li>
+                        </ul>    
+                              </div>
                               </div>
                              </section><!-- End Analysis Section -->
+
             
             
          </main>
-
       </body>
 
+	 <style>
+         
+         i:hover, i:active{
+            color: #5777ba;
+         }
 
+      </style>
 
       <footer id="footer">
     
@@ -308,61 +215,7 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
           <script src="{{ url_for('static',filename='assets/vendor/venobox/venobox.min.js') }}"></script>
           <script src="{{ url_for('static',filename='assets/vendor/aos/aos.js') }}"></script>
           
-          <script>
-         $('input[type=radio][name="gene_test1"]').on('change',function(){
-               if( $(this).val()==="yes"){
-               $("#gene_email1").show()
-               $("#gene_phone1").show()
-               $("#email1").prop('required',true);
-               $("#phone1").prop('required',true); 
-
-               }
-               else{
-               $("#gene_email1").hide()
-               $("#gene_phone1").hide()
-               $("#email1").prop('required',false);
-               $("#phone1").prop('required',false); 
-
-               }
-            });
-
-            $('input[type=radio][name="gene_test2"]').on('change',function(){
-               if( $(this).val()==="yes"){
-               $("#gene_email2").show()
-               $("#gene_phone2").show()
-               $("#email2").prop('required',true);
-               $("#phone2").prop('required',true); 
-
-               }
-               else{
-               $("#gene_email2").hide()
-               $("#gene_phone2").hide()
-               $("#email2").prop('required',false);
-               $("#phone2").prop('required',false); 
-
-               }
-            });
-
-            $('input[type=radio][name="gene_test3"]').on('change',function(){
-               if( $(this).val()==="yes"){
-               $("#gene_email3").show()
-               $("#gene_phone3").show()
-               $("#email3").prop('required',true);
-               $("#phone3").prop('required',true); 
-
-               }
-               else{
-               $("#gene_email3").hide()
-               $("#gene_phone3").hide()
-               $("#email3").prop('required',false);
-               $("#phone3").prop('required',false); 
-
-               }
-            });
-            
-            
-          
-          </script>
+        
       
           
         
