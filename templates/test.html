@@ -281,7 +281,22 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
 					</dl>
 				  </li>
 
-			  
+			  <li data-aos="fade-up" data-aos-delay="1100">
+					<dl>
+						<p>
+								<label for="fears"><b>What are your greatest fears about breast cancer?</b></label><br>
+								<select id="fears" name="fears" required>
+								<option value="lifestyle">I don’t know if my genes and current lifestyle choices are increasing my risk</option>
+								<option value="screen">I might screen for it too late</option>
+								<option value="finance">I am not financially secure to deal with cancer related expenses</option>
+								<option value="no">No fears</option>
+								<option value="others">Others</option>
+
+								
+							</select>
+						</p>
+						</dl>		
+					</li>
 			  
 					  <li data-aos="fade-up" data-aos-delay="1300" >
 							<dl>
@@ -338,65 +353,68 @@ src="https://www.facebook.com/tr?id=532239537659109&ev=PageView
 	$("#test").hide()
 	var progress = $("#progress");
 	$('input[type=radio][name="family_history"]').on('change',function(){
-        progress.attr("value", "8.3");
+        progress.attr("value", "7.1");
         });
 	$('input[type=radio][name="Sex"]').on('change',function(){
-        progress.attr("value", "16.6");
+        progress.attr("value", "14.2");
         });
 	$('#height').change(function(){
-        progress.attr("value", "24.9");
+        progress.attr("value", "21.3");
 
 	});
 	$('#bmi').change(function(){
-        progress.attr("value", "33.2");
+        progress.attr("value", "28.4");
 
 	});
 	$('#children').change(function(){
-        progress.attr("value", "41.5");
+        progress.attr("value", "35.5");
 
 	});
 	$('#age_of_first_birth').change(function(){
-        progress.attr("value", "49.8");
+        progress.attr("value", "42.6");
 
 	});
 	$('#menarche_age').change(function(){
-        progress.attr("value", "58.1");
+        progress.attr("value", "49.7");
 
 	});
 	$('#age_of_menopause').change(function(){
-        progress.attr("value", "66.4");
+        progress.attr("value", "56.8");
 
 	});
 	$('#mht').change(function(){
-        progress.attr("value", "74.7");
+        progress.attr("value", "63.9");
 
 	});
 	$('#oral_contraception').change(function(){
-        progress.attr("value", "83");
+        progress.attr("value", "71");
 
 	});
 	$('#alcohol').change(function(){
-        progress.attr("value", "91.3");
+        progress.attr("value", "78.1");
 
 	});
 	$('input[type=radio][name="gene_test"]').on('change',function(){
         if( $(this).val()==="yes"){
         $("#test").show()
-        progress.attr("value", "95.3");
+        progress.attr("value", "85.2");
 
         }
         else{
         $("#test").hide()
-        progress.attr("value", "100");
+        progress.attr("value", "92.3");
 
         }
 	});
 	$('#gene_type').change(function(){
+        progress.attr("value", "92.3");
+
+	});
+	$('#fears').change(function(){
         progress.attr("value", "100");
 
 	});
 	</script>
-
 	
 	<!-- Template Main JS File -->
 	<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
