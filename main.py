@@ -69,7 +69,7 @@ def fill_form():
                                                     values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','','')
                                                     
                                                     
-                                                """.format(dataset_id,request.form["family_history"],age, request.form.get("menarche_age"),request.form.get("age_of_first_birth"), request.form.get("mht"),request.form.get("alcohol"),request.form.get("age_of_menopause"),request.form.get("height"),g,request.form.get("radiation_exposure"),risk,idd,request.form.get("fears"))
+                                                """.format(dataset_id,request.form["family_history"],age, request.form.get("menarche_age"),request.form.get("age_of_first_birth"), request.form.get("mht"),request.form.get("alcohol"),request.form.get("age_of_menopause"),request.form.get("height"),g,request.form.get("radiation_exposure"),risk,idd, request.form["fears"])
             query_job = client.query(query) 
             session['id']=idd
             
