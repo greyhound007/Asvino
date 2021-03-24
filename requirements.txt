@@ -22,7 +22,7 @@ python-vlc==3.0.4106
 pyttsx==1.1
 pytz==2018.7
 requests==2.21.0
-rsa==4.0
+rsa==4.1
 singledispatch==3.4.0.3
 six==1.14.0
 smart-open==1.8.3
